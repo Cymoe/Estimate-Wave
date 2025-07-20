@@ -62,7 +62,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.75rem 1.25rem;
+    padding: 0.5rem 1.25rem;
     max-width: 900px;
     margin: 0 auto;
     background: white;
@@ -74,6 +74,13 @@ header {
     display: flex;
     align-items: center;
     min-width: 180px;
+}
+
+.logo-image {
+    height: 100px;
+    width: auto;
+    object-fit: contain;
+    filter: contrast(1.4) brightness(0.6);
 }
 
 .logo-text {
@@ -927,6 +934,14 @@ footer {
     margin-bottom: 2rem;
 }
 
+.footer-logo-image {
+    height: 80px;
+    width: auto;
+    object-fit: contain;
+    margin-bottom: 1rem;
+    filter: contrast(1.4) brightness(0.6);
+}
+
 .footer-links {
     display: flex;
     gap: 2rem;
@@ -1561,55 +1576,220 @@ blockquote cite {
     color: var(--text-color);
 }
 
+/* Tablet styles */
+@media (max-width: 1024px) {
+    .comparison-grid {
+        margin: 0 2rem;
+    }
+    
+    .comparison-cell {
+        padding: 1.25rem 1rem;
+    }
+    
+    .comparison-label {
+        padding: 1.25rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .price {
+        font-size: 1.3rem;
+    }
+}
+
+/* Mobile styles - Horizontal scroll */
 @media (max-width: 768px) {
+    .comparison {
+        padding: 3rem 0;
+    }
+    
+    .comparison-title {
+        font-size: 2rem;
+        padding: 0 1rem;
+        margin-bottom: 2rem;
+    }
+    
     .comparison-grid {
         margin: 0 1rem;
         font-size: 0.875rem;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
     }
     
     .comparison-header,
     .comparison-row {
-        min-width: 700px;
+        min-width: 650px;
     }
 
     .comparison-header h3 {
-        font-size: 0.9rem;
+        font-size: 0.875rem;
     }
 
     .comparison-cell {
-        padding: 0.75rem;
+        padding: 1rem 0.75rem;
+    }
+    
+    .comparison-label {
+        padding: 1rem;
+        font-size: 0.875rem;
     }
 
     .price {
         font-size: 1.1rem;
     }
     
+    .detail {
+        font-size: 0.75rem;
+    }
+    
     .check-icon, .cross-icon {
-        width: 36px;
-        height: 36px;
+        width: 28px;
+        height: 28px;
     }
     
     .recommended-badge {
-        font-size: 0.65rem;
+        font-size: 0.6rem;
         padding: 0.2rem 0.5rem;
     }
     
     .comparison-cta {
-        padding: 0.75rem 1.5rem;
-        font-size: 0.875rem;
+        padding: 0.6rem 1.2rem;
+        font-size: 0.8rem;
     }
     
     /* Add scroll indicator */
     .comparison::after {
-        content: "← Scroll →";
+        content: "Swipe to see more →";
         display: block;
         text-align: center;
         color: var(--light-text);
-        font-size: 0.875rem;
+        font-size: 0.8rem;
         margin-top: 1rem;
-        opacity: 0.7;
+        opacity: 0.6;
+        animation: swipeHint 2s ease-in-out infinite;
+    }
+}
+
+@keyframes swipeHint {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(5px); }
+}
+
+/* Very small mobile - Card layout */
+@media (max-width: 480px) {
+    .comparison-grid {
+        display: block;
+        overflow: visible;
+        box-shadow: none;
+        background: transparent;
+    }
+    
+    .comparison-header {
+        display: none;
+    }
+    
+    .comparison-row {
+        display: block;
+        margin-bottom: 1rem;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        padding: 1.5rem;
+        border-bottom: none;
+    }
+    
+    .comparison-row:hover {
+        background: white;
+    }
+    
+    .comparison-label {
+        display: block;
+        background: transparent;
+        padding: 0;
+        margin-bottom: 1rem;
+        font-weight: 600;
+        font-size: 1rem;
+        text-align: left;
+        color: var(--text-color);
+    }
+    
+    .comparison-cell {
+        display: block;
+        padding: 0;
+        margin-bottom: 1rem;
+        text-align: left;
+    }
+    
+    .comparison-cell.highlighted {
+        background: transparent;
+        padding: 1rem;
+        border-radius: 8px;
+        margin: -1rem -1rem 1rem -1rem;
+    }
+    
+    .comparison-cell.highlighted::before {
+        display: none;
+    }
+    
+    /* Mobile card headers */
+    .comparison-cell::before {
+        content: attr(data-label);
+        display: block;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: var(--light-text);
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+    
+    .price {
+        display: inline-block;
+        margin-right: 0.5rem;
+    }
+    
+    .detail {
+        display: inline;
+    }
+    
+    .check-icon, .cross-icon {
+        width: 20px;
+        height: 20px;
+        margin-bottom: 0;
+        margin-right: 0.5rem;
+        vertical-align: middle;
+        display: inline-block;
+    }
+    
+    .cta-row {
+        background: white;
+        padding: 1.5rem;
+        margin-top: 2rem;
+    }
+    
+    .cta-row .comparison-cell {
+        margin-bottom: 0.75rem;
+    }
+    
+    .cta-row .comparison-cell:last-child {
+        margin-bottom: 0;
+    }
+    
+    .comparison-cta {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 0.875rem;
+    }
+    
+    .recommended-badge {
+        position: absolute;
+        top: -0.5rem;
+        right: -0.5rem;
+    }
+    
+    .comparison::after {
+        display: none;
     }
 }
 
