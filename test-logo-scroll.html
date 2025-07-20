@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logo Scroll Test - Estimate Wave</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Test wrapper to isolate the logo scroll */
+        .test-wrapper {
+            margin: 50px 0;
+            background: #f8f8f8;
+            padding: 20px 0;
+        }
+        h1 {
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .status {
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            color: #666;
+            margin-top: 20px;
+        }
+        .success { color: #4CAF50; }
+        .error { color: #f44336; }
+    </style>
+</head>
+<body>
+    <h1>Logo Scroll Test</h1>
+    
+    <div class="test-wrapper">
+        <div class="logo-scroll">
+            <div class="logo-scroll-track">
+                <!-- First set of logos -->
+                <div class="logo-slide">
+                    <img src="images/client-logos/campos-family-services.png" alt="Campos Family Services">
+                </div>
+                <div class="logo-slide">
+                    <img src="images/client-logos/yates-flooring-center.png" alt="Yates Flooring Center">
+                </div>
+                <div class="logo-slide">
+                    <img src="images/client-logos/basin-gm.png" alt="Basin GM">
+                </div>
+                <div class="logo-slide">
+                    <img src="images/client-logos/pinnacle-granite.png" alt="Pinnacle Granite TX">
+                </div>
+                <div class="logo-slide">
+                    <img src="images/client-logos/pristine-roofing.png" alt="Pristine Roofing">
+                </div>
+                <div class="logo-slide">
+                    <img src="images/client-logos/client-6.png" alt="Premium Contractor">
+                </div>
+                <div class="logo-slide">
+                    <img src="images/client-logos/client-7.png" alt="Quality Builder">
+                </div>
+                <div class="logo-slide">
+                    <img src="images/client-logos/client-8.png" alt="Professional Services">
+                </div>
+                <!-- Duplicate set for seamless scrolling -->
+                <div class="logo-slide">
+                    <img src="images/client-logos/campos-family-services.png" alt="Campos Family Services">
+                </div>
+                <div class="logo-slide">
+                    <img src="images/client-logos/yates-flooring-center.png" alt="Yates Flooring Center">
+                </div>
+                <div class="logo-slide">
+                    <img src="images/client-logos/basin-gm.png" alt="Basin GM">
+                </div>
+                <div class="logo-slide">
+                    <img src="images/client-logos/pinnacle-granite.png" alt="Pinnacle Granite TX">
+                </div>
+                <div class="logo-slide">
+                    <img src="images/client-logos/pristine-roofing.png" alt="Pristine Roofing">
+                </div>
+                <div class="logo-slide">
+                    <img src="images/client-logos/client-6.png" alt="Premium Contractor">
+                </div>
+                <div class="logo-slide">
+                    <img src="images/client-logos/client-7.png" alt="Quality Builder">
+                </div>
+                <div class="logo-slide">
+                    <img src="images/client-logos/client-8.png" alt="Professional Services">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <p class="status">If you see logos scrolling smoothly above with grayscale effect, the implementation is working correctly!</p>
+    
+    <script>
+        // Check if images are loading
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('.logo-slide img');
+            let loadedCount = 0;
+            let errorCount = 0;
+            
+            images.forEach(img => {
+                img.addEventListener('load', () => {
+                    loadedCount++;
+                    checkStatus();
+                });
+                
+                img.addEventListener('error', () => {
+                    errorCount++;
+                    console.error('Failed to load:', img.src);
+                    checkStatus();
+                });
+            });
+            
+            function checkStatus() {
+                if (loadedCount + errorCount === images.length) {
+                    const status = document.querySelector('.status');
+                    if (errorCount === 0) {
+                        status.innerHTML = '<span class="success">✓ All logos loaded successfully!</span>';
+                    } else {
+                        status.innerHTML = `<span class="error">⚠ ${errorCount} logo(s) failed to load. Check console for details.</span>`;
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

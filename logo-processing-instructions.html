@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Logo Processing Instructions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #666;
+            margin-top: 30px;
+        }
+        .logo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .logo-box {
+            border: 2px dashed #ddd;
+            padding: 20px;
+            text-align: center;
+            background: #fafafa;
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo-box h3 {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+        .logo-placeholder {
+            width: 200px;
+            height: 80px;
+            background: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-size: 12px;
+            border-radius: 4px;
+        }
+        .instructions {
+            background: #f0f0f0;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .instructions h3 {
+            margin-top: 0;
+        }
+        .instructions ol {
+            margin-left: 20px;
+        }
+        .instructions li {
+            margin: 10px 0;
+        }
+        code {
+            background: #e0e0e0;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Logo Processing Instructions for Estimate Wave</h1>
+        
+        <div class="instructions">
+            <h3>Standardization Requirements:</h3>
+            <ol>
+                <li><strong>Dimensions:</strong> Maximum 200px width × 80px height (maintain aspect ratio)</li>
+                <li><strong>Background:</strong> Transparent PNG format</li>
+                <li><strong>Color Treatment:</strong> Original colors (CSS will apply grayscale filter)</li>
+                <li><strong>File Naming:</strong> Use lowercase with hyphens (e.g., <code>campos-family-services.png</code>)</li>
+            </ol>
+        </div>
+
+        <h2>Current Logos to Process:</h2>
+        <div class="logo-grid">
+            <div class="logo-box">
+                <div class="logo-placeholder">Campos Family Services</div>
+                <h3>campos-family-services.png</h3>
+                <p>From: Campos_FS_Tile.png</p>
+            </div>
+            <div class="logo-box">
+                <div class="logo-placeholder">Yates Flooring Center</div>
+                <h3>yates-flooring-center.png</h3>
+                <p>From: YatesFlooringCenter-Logo.webp</p>
+            </div>
+            <div class="logo-box">
+                <div class="logo-placeholder">Basin GM</div>
+                <h3>basin-gm.png</h3>
+                <p>From: BasinGM_logos-BlackBG.png<br><strong>Note: Remove black background</strong></p>
+            </div>
+            <div class="logo-box">
+                <div class="logo-placeholder">Pinnacle Granite TX</div>
+                <h3>pinnacle-granite.png</h3>
+                <p>From: pinnacle-granite-tx.png</p>
+            </div>
+            <div class="logo-box">
+                <div class="logo-placeholder">Pristine Roofing</div>
+                <h3>pristine-roofing.png</h3>
+                <p>From: 6236037fd7570a8616ff5f40_Pristine Roofing Logo_edited.png</p>
+            </div>
+            <div class="logo-box">
+                <div class="logo-placeholder">Client 6</div>
+                <h3>client-6.png</h3>
+                <p>From: 363441350_128589513625342_4363966892722747186_n.jpg</p>
+            </div>
+            <div class="logo-box">
+                <div class="logo-placeholder">Client 7</div>
+                <h3>client-7.png</h3>
+                <p>From: 305412056_498544548942255_7992234592442770309_n.png</p>
+            </div>
+            <div class="logo-box">
+                <div class="logo-placeholder">Client 8</div>
+                <h3>client-8.png</h3>
+                <p>From: 243167553_4302163136499086_9200571258512949501_n.jpg</p>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <h3>Processing Steps:</h3>
+            <ol>
+                <li>Open each logo in an image editor (Photoshop, GIMP, or online tool like remove.bg)</li>
+                <li>Remove any colored backgrounds (especially the black background from Basin GM)</li>
+                <li>Resize to fit within 200×80px while maintaining aspect ratio</li>
+                <li>Save as PNG with transparent background</li>
+                <li>Name files according to the convention above</li>
+                <li>Place processed files in: <code>/images/client-logos/</code></li>
+            </ol>
+        </div>
+
+        <div class="instructions">
+            <h3>CSS Styling Applied:</h3>
+            <p>The website will automatically apply these effects to all logos:</p>
+            <ul>
+                <li>Grayscale filter (removes color for consistency)</li>
+                <li>Slight transparency (70% opacity)</li>
+                <li>Color and full opacity on hover</li>
+                <li>Smooth transitions for professional feel</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

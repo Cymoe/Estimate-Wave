@@ -1,0 +1,13 @@
+{
+  "name": "servicepro",
+  "version": "1.0.0",
+  "description": "ServicePro landing page",
+  "main": "index.html",
+  "scripts": {
+    "start": "serve",
+    "dev": "serve"
+  },
+  "dependencies": {
+    "serve": "^14.2.1"
+  }
+}
