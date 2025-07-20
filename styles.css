@@ -1372,18 +1372,18 @@ blockquote cite {
 
 .comparison-grid {
     background: white;
-    border-radius: 16px;
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
     margin: 0 auto;
     max-width: 1000px;
-    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .comparison-header {
     display: grid;
     grid-template-columns: 1.5fr 1fr 1fr 1fr;
     background: var(--background-light);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
 }
 
 .comparison-header .comparison-cell {
@@ -1411,13 +1411,12 @@ blockquote cite {
 .comparison-row {
     display: grid;
     grid-template-columns: 1.5fr 1fr 1fr 1fr;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
     transition: all 0.3s ease;
 }
 
 .comparison-row:hover {
-    background: rgba(0, 0, 0, 0.02);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    background: rgba(0, 0, 0, 0.01);
 }
 
 .comparison-row:last-child {
@@ -1441,40 +1440,39 @@ blockquote cite {
     align-items: center;
     transition: transform 0.2s ease;
     position: relative;
-    background: rgba(0, 0, 0, 0.02);
 }
 
 .comparison-cell:hover {
-    transform: scale(1.02);
+    transform: scale(1.01);
 }
 
 .comparison-cell.highlighted {
-    background: linear-gradient(135deg, #fff8f0 0%, #fef3e7 100%);
+    background: rgba(212, 165, 116, 0.04);
     position: relative;
-    box-shadow: 0 0 0 3px var(--secondary-color) inset;
 }
 
 .comparison-cell.highlighted::before {
     content: '';
     position: absolute;
-    top: -3px;
-    left: -3px;
-    right: -3px;
-    height: 6px;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
     background: var(--secondary-color);
-    border-radius: 3px 3px 0 0;
+    opacity: 0.5;
 }
 
 .recommended-badge {
     display: inline-block;
     background: var(--secondary-color);
     color: var(--white);
-    font-size: 0.75rem;
-    font-weight: 700;
+    font-size: 0.65rem;
+    font-weight: 600;
     padding: 0.25rem 0.75rem;
-    border-radius: 20px;
+    border-radius: 16px;
     margin-bottom: 0.5rem;
     letter-spacing: 0.05em;
+    opacity: 0.9;
 }
 
 .price {
@@ -1482,6 +1480,12 @@ blockquote cite {
     font-weight: 600;
     color: var(--text-color);
     margin-bottom: 0.25rem;
+    line-height: 1.2;
+}
+
+.comparison-cell.highlighted .price {
+    color: var(--text-color);
+    font-weight: 700;
 }
 
 .detail {
@@ -1496,11 +1500,11 @@ blockquote cite {
 }
 
 .check-icon {
-    animation: checkBounce 0.5s ease-out;
+    opacity: 0.9;
 }
 
 .cross-icon {
-    animation: crossShake 0.5s ease-out;
+    opacity: 0.9;
 }
 
 @keyframes checkBounce {
@@ -1538,24 +1542,23 @@ blockquote cite {
 .comparison-cta.primary {
     background: var(--secondary-color);
     color: var(--white);
-    box-shadow: 0 4px 12px rgba(212, 165, 116, 0.3);
+    opacity: 0.95;
 }
 
 .comparison-cta.primary:hover {
-    background: var(--primary-color);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(26, 26, 26, 0.2);
+    opacity: 1;
+    transform: translateY(-1px);
 }
 
 .comparison-cta.secondary {
     background: transparent;
     color: var(--light-text);
-    border: 2px solid var(--border-color);
+    border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .comparison-cta.secondary:hover {
-    border-color: var(--primary-color);
-    color: var(--primary-color);
+    border-color: rgba(0, 0, 0, 0.2);
+    color: var(--text-color);
 }
 
 @media (max-width: 768px) {
