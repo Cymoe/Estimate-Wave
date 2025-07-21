@@ -19,10 +19,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     body.appendChild(navLinks);
                     // Force reflow to ensure styles are applied
                     navLinks.offsetHeight;
-                    // Reset any inline styles that might interfere
+                    // Clear inline styles but ensure centering is maintained
                     navLinks.style.position = '';
                     navLinks.style.top = '';
+                    navLinks.style.left = '';
+                    navLinks.style.right = '';
                     navLinks.style.transform = '';
+                    navLinks.style.width = '';
                     // Add the active class after a small delay to ensure proper positioning
                     requestAnimationFrame(() => {
                         requestAnimationFrame(() => {

@@ -92,6 +92,7 @@ header {
 .logo-standalone .logo-image {
     height: 120px;
     width: auto;
+    transition: height 0.3s ease;
 }
 
 .main-nav {
@@ -250,13 +251,13 @@ header {
     header {
         position: relative; /* Changed from static to relative for positioning context */
         top: auto;
-        padding: 1rem 1rem;
+        padding: 0 1rem; /* Remove vertical padding */
         height: auto;
-        min-height: 140px;
+        min-height: auto; /* Let content determine height */
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        margin-top: 3rem; /* Increased space for urgency banner */
+        margin-top: 2.5rem; /* Space for urgency banner */
     }
     
     .logo-standalone {
@@ -266,17 +267,17 @@ header {
         transform: none !important; /* Reset transform */
         display: flex;
         justify-content: center;
-        margin: 1.5rem auto 0; /* Add top margin to create space from banner */
+        margin: 0 auto; /* Remove top margin to reduce padding */
         z-index: auto;
     }
     
     .logo-standalone .logo-image {
-        height: 100px; /* Slightly smaller on mobile */
+        height: 140px; /* Much larger logo for better mobile visibility */
     }
     
     .main-nav {
         position: fixed;
-        top: 3.5rem; /* Position below urgency banner */
+        top: 5rem; /* Lower position, better aligned with logo */
         right: 1rem;
         width: auto;
         padding: 0.5rem;
@@ -292,60 +293,67 @@ header {
     .nav-links {
         position: fixed !important;
         top: 5.5rem !important;
-        left: 50% !important;
-        transform: translateX(-50%) translateY(-20px) scale(0.95) !important;
+        left: 0 !important;
+        right: 0 !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        transform: translateY(-20px) scale(0.95) !important;
         background: white;
         border-radius: 12px;
         box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-        padding: 1.5rem;
+        padding: 1rem;
         width: calc(100% - 2rem) !important;
         max-width: 400px;
         opacity: 0;
         visibility: hidden;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        z-index: 9999;
+        z-index: 99999; /* Increased z-index to ensure it's always on top */
         display: flex;
         flex-direction: column;
         align-items: stretch;
-        gap: 1rem;
-        max-height: calc(100vh - 8rem);
+        gap: 0.5rem;
+        max-height: calc(100vh - 6rem);
         overflow-y: auto;
         pointer-events: none;
         -webkit-overflow-scrolling: touch;
+        box-sizing: border-box; /* Ensure padding is included in width calculation */
     }
     
     .nav-links.active {
         opacity: 1;
         visibility: visible;
-        transform: translateX(-50%) translateY(0) scale(1) !important;
+        transform: translateY(0) scale(1) !important;
         pointer-events: auto;
     }
     
     /* Override positioning to ensure centering */
     @media (max-width: 768px) {
         .main-nav .nav-links,
-        body > .nav-links {
+        body > .nav-links,
+        .nav-links {
             position: fixed !important;
             top: 5.5rem !important;
-            left: 50% !important;
-            transform: translateX(-50%) translateY(-20px) scale(0.95) !important;
+            left: 0 !important;
+            right: 0 !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            transform: translateY(-20px) scale(0.95) !important;
             width: calc(100% - 2rem) !important;
             max-width: 400px !important;
-            max-height: calc(100vh - 8rem) !important;
-            max-height: calc(100dvh - 8rem) !important; /* Use dynamic viewport height */
+            max-height: calc(100vh - 6rem) !important;
             overflow-y: auto !important;
             -webkit-overflow-scrolling: touch !important;
             contain: layout style; /* Prevent layout shifts */
         }
         
         .main-nav .nav-links.active,
-        body > .nav-links.active {
-            transform: translateX(-50%) translateY(0) scale(1) !important;
+        body > .nav-links.active,
+        .nav-links.active {
+            transform: translateY(0) scale(1) !important;
         }
         
         /* Ensure menu is never cut off */
         body > .nav-links {
-            bottom: 1rem;
             height: auto;
         }
     }
@@ -353,20 +361,22 @@ header {
     .nav-menu {
         display: flex;
         flex-direction: column;
-        gap: 0.5rem;
+        gap: 0.25rem;
         width: 100%;
         margin-left: 0 !important;
     }
     
     .nav-menu a,
     .nav-links a:not(.book-call-btn) {
-        padding: 1rem;
+        padding: 0.5rem 0.75rem;
         border-radius: 8px;
         transition: background 0.2s ease;
         text-align: center !important;
         width: 100%;
         display: block;
         font-weight: 500;
+        font-size: 0.95rem;
+        line-height: 1.2;
     }
     
     .nav-menu a:hover {
@@ -376,9 +386,9 @@ header {
     .nav-links .book-call-btn {
         width: 100%;
         text-align: center;
-        margin-top: 0.5rem;
+        margin-top: 0.375rem;
         display: block;
-        padding: 1rem;
+        padding: 0.625rem 1.25rem;
         font-size: 1rem;
         border-radius: 8px;
     }
@@ -455,11 +465,9 @@ header {
 
 @media (max-width: 768px) {
     .urgency-banner {
-        font-size: 0.875rem;
-        padding: 0.625rem 0.75rem;
+        font-size: 0.8125rem;
+        padding: 0.5rem 0.75rem;
     }
-    
-
 }
 
 /* Hero Section */
@@ -470,11 +478,7 @@ header {
     position: relative;
 }
 
-@media (max-width: 768px) {
-    .hero {
-        padding-top: 2rem;
-    }
-}
+/* Removed - Mobile hero styles are defined later in the file */
 
 .hero-content {
     display: grid;
@@ -510,13 +514,12 @@ header {
 .video-wrapper {
     position: relative;
     width: 100%;
-    height: 320px;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-    background-size: 200% 100%;
-    animation: shimmer 1.5s infinite;
+    background: #f0f0f0;
 }
 
 @keyframes shimmer {
@@ -529,10 +532,14 @@ header {
 }
 
 .video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     border: none;
     background: white;
+    border-radius: 12px; /* Match parent border radius */
 }
 
 .stats {
@@ -1484,18 +1491,37 @@ header {
 
 @media (max-width: 768px) {
     .crm-callout {
-        padding: 3rem 0;
+        padding: 2rem 0;
     }
     
     .callout-content {
         grid-template-columns: 1fr;
-        gap: 2rem;
-        padding: 2rem;
+        gap: 1.5rem;
+        padding: 1.5rem;
         text-align: center;
+        margin: 0;
+    }
+    
+    .callout-content h2 {
+        font-size: 1.5rem;
+        line-height: 1.2;
+    }
+    
+    .callout-subtitle {
+        font-size: 0.9rem;
+        line-height: 1.4;
     }
     
     .callout-features {
-        justify-content: center;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+        margin: 0 auto;
+        max-width: fit-content;
+    }
+    
+    .callout-features span {
+        font-size: 0.875rem;
     }
     
     .callout-action {
@@ -1505,6 +1531,8 @@ header {
     .secondary-button {
         width: 100%;
         justify-content: center;
+        font-size: 0.9rem;
+        padding: 0.75rem 1.5rem;
     }
 }
 
@@ -1820,27 +1848,115 @@ footer {
         display: flex;
     }
     
+    /* Enhanced Hero Mobile Styles */
+    .hero {
+        padding-top: 20px !important; /* Minimal padding for tighter layout */
+        padding-bottom: 1.5rem;
+    }
+    
+    .hero .container {
+        padding: 0 1rem; /* Keep minimal padding */
+    }
+    
     .hero-content {
         grid-template-columns: 1fr;
-        gap: 2rem;
-        padding: 0 1rem;
+        gap: 1rem; /* Minimal gap between elements */
+        padding: 0;
+        margin-bottom: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Center all content */
+        width: 100%;
     }
     
     .hero-text {
         text-align: center;
+        order: 2; /* Move text below video on mobile */
+        padding: 0;
+        width: 100%;
+        max-width: 600px; /* Limit text width for better readability */
+    }
+    
+    .hero-video {
+        order: 1; /* Video first on mobile */
+        margin: 0 -1rem; /* Negative margin to extend beyond container padding */
+        padding: 0 1rem; /* Add padding back to maintain proper spacing */
+        width: calc(100% + 2rem); /* Compensate for negative margins */
+        display: flex;
+        justify-content: center;
+        align-items: center; /* Also center vertically if needed */
     }
     
     .hero h1 {
-        font-size: 2rem;
+        font-size: 1.75rem; /* Better mobile size */
+        line-height: 1.2;
+        margin-bottom: 1rem;
+    }
+    
+    .hero .subtitle {
+        font-size: 1rem;
+        line-height: 1.5;
+        margin-bottom: 1.5rem;
+        padding: 0 0.5rem; /* Add some padding for readability */
+    }
+    
+    .hero .primary-button {
+        display: inline-block;
+        padding: 0.875rem 2rem;
+        font-size: 1rem;
+        width: auto;
+        max-width: 100%;
+        margin: 0 auto; /* Center the button */
+    }
+    
+    .hero-support {
+        font-size: 0.875rem;
+        margin-top: 1rem;
+        padding: 0 0.5rem;
+        line-height: 1.4;
     }
     
     .video-wrapper {
-        height: 240px;
+        padding-bottom: 56.25%; /* Maintain 16:9 ratio on mobile */
+        border-radius: 8px; /* Slightly smaller radius on mobile */
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08); /* Softer shadow */
+        width: 100%; /* Full width of container */
+        max-width: 600px; /* Limit max width for better viewing */
+        margin: 0 auto; /* Center the video */
+        position: relative;
     }
     
+    .video-wrapper iframe {
+        border-radius: 8px; /* Match mobile border radius */
+    }
+    
+    /* Enhanced stats mobile layout */
     .stats {
-        flex-direction: column;
-        gap: 2rem;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        justify-content: center;
+        margin: 1rem 0;
+        padding: 0;
+    }
+    
+    .stat-item {
+        flex: 0 0 calc(50% - 0.5rem); /* Two columns on mobile */
+        text-align: center;
+        padding: 1rem 0.5rem;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    
+    .stat-item h3 {
+        font-size: 1.75rem; /* Smaller on mobile */
+        margin-bottom: 0.25rem;
+    }
+    
+    .stat-item p {
+        font-size: 0.875rem;
+        line-height: 1.3;
     }
     
     .footer-content {
@@ -1866,6 +1982,119 @@ footer {
     
     .footer-social {
         justify-content: center;
+    }
+}
+
+/* Small mobile devices (480px and below) */
+@media (max-width: 480px) {
+    .hero {
+        padding-top: 15px !important; /* Minimal padding for compact mobile view */
+        padding-bottom: 1rem;
+    }
+    
+    .nav-links,
+    body > .nav-links,
+    .main-nav .nav-links {
+        width: calc(100% - 1rem) !important; /* Smaller margins on very small screens */
+        max-width: calc(100vw - 1rem) !important; /* Ensure it never exceeds viewport */
+    }
+    
+    .logo-standalone .logo-image {
+        height: 140px; /* Keep large logo even on small screens */
+    }
+    
+    header {
+        min-height: auto; /* Let content determine height */
+    }
+    
+    .hero h1 {
+        font-size: 1.5rem; /* Even smaller for tiny screens */
+        padding: 0 0.5rem;
+    }
+    
+    .hero .subtitle {
+        font-size: 0.9375rem;
+        padding: 0;
+    }
+    
+    .hero .primary-button {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9375rem;
+        width: 90%; /* Nearly full width on very small screens */
+    }
+    
+    .stats {
+        gap: 0.75rem;
+    }
+    
+    .stat-item {
+        flex: 0 0 100%; /* Single column on very small screens */
+        padding: 0.875rem 0.5rem;
+    }
+    
+    .stat-item h3 {
+        font-size: 1.5rem;
+    }
+    
+    .stat-item p {
+        font-size: 0.8125rem;
+    }
+    
+    .video-wrapper {
+        border-radius: 6px;
+        width: 100%; /* Full width */
+        margin: 0 auto; /* Center the video */
+        max-width: 100%; /* Ensure it doesn't exceed container */
+    }
+    
+    .video-wrapper iframe {
+        border-radius: 6px; /* Match small mobile border radius */
+    }
+}
+
+/* Landscape mobile orientation */
+@media (max-width: 768px) and (orientation: landscape) {
+    .hero {
+        padding-top: 10px !important; /* Minimal padding in landscape */
+    }
+    
+    .logo-standalone .logo-image {
+        height: 120px; /* Slightly smaller in landscape but still prominent */
+    }
+    
+    .hero-content {
+        grid-template-columns: 1fr 1fr; /* Side by side in landscape */
+        gap: 2rem;
+    }
+    
+    .hero-text {
+        order: 1; /* Normal order in landscape */
+        text-align: left;
+    }
+    
+    .hero-video {
+        order: 2;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .stats {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    .stat-item {
+        flex: 0 0 auto;
+        padding: 0.5rem;
+        background: transparent;
+        box-shadow: none;
+    }
+    
+    .video-wrapper {
+        margin: 0 auto; /* Ensure video is centered in landscape too */
+        width: 100%;
     }
 }
 
@@ -3183,5 +3412,29 @@ textarea.error {
     .logo-standalone {
         display: flex;
         justify-content: center;
+    }
+}
+
+/* Extra small mobile styles */
+@media (max-width: 400px) {
+    .callout-content {
+        padding: 1rem;
+    }
+    
+    .callout-content h2 {
+        font-size: 1.25rem;
+    }
+    
+    .callout-subtitle {
+        font-size: 0.85rem;
+    }
+    
+    .callout-features span {
+        font-size: 0.8rem;
+    }
+    
+    .secondary-button {
+        font-size: 0.85rem;
+        padding: 0.7rem 1rem;
     }
 }
