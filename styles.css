@@ -31,6 +31,28 @@ body {
     background: var(--background-light);
 }
 
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.75rem;
+    }
+    
+    h3 {
+        font-size: 1.25rem;
+    }
+    
+    section {
+        padding: 3rem 0;
+    }
+}
+
 html {
     margin: 0;
     padding: 0;
@@ -45,17 +67,31 @@ html {
     z-index: 1;
 }
 
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1rem;
+    }
+}
+
 /* Navigation */
 header {
-    position: fixed;
-    width: 100%;
-    top: 1.5rem;
-    left: 0;
-    z-index: 1000;
+    /* Container for logo and nav - no longer needs positioning */
+}
+
+.logo-standalone {
     display: flex;
-    justify-content: center;
-    padding: 0 1rem;
-    transition: transform 0.3s ease-in-out;
+    align-items: center;
+    margin-right: 2rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(calc(-600px + 2rem));
+    top: calc(2.75rem + 1.5rem);
+    z-index: 100;
+}
+
+.logo-standalone .logo-image {
+    height: 120px;
+    width: auto;
 }
 
 .main-nav {
@@ -64,10 +100,15 @@ header {
     align-items: center;
     padding: 0.5rem 1.25rem;
     max-width: 900px;
-    margin: 0 auto;
+    margin: 0;
     background: white;
     border-radius: 9999px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease-in-out;
+    position: fixed;
+    top: calc(2.75rem + 1.5rem);
+    right: 2rem;
+    z-index: 1000;
 }
 
 .logo {
@@ -76,12 +117,7 @@ header {
     min-width: 180px;
 }
 
-.logo-image {
-    height: 100px;
-    width: auto;
-    object-fit: contain;
-    filter: contrast(1.4) brightness(0.6);
-}
+/* Logo image styling moved to logo-standalone */
 
 .logo-text {
     font-size: 1.5rem;
@@ -96,16 +132,15 @@ header {
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 2rem;
-    justify-content: center;
-    flex: 1;
-    margin: 0 1.5rem;
+    gap: 3rem;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .nav-menu {
     display: flex;
-    gap: 2rem;
-    justify-content: center;
+    gap: 2.5rem;
+    margin-left: 2rem;
 }
 
 .nav-links a:not(.book-call-btn) {
@@ -139,6 +174,14 @@ header {
     background-color: transparent;
     color: var(--secondary-color) !important;
     box-shadow: 0 4px 12px rgba(212, 165, 116, 0.3);
+}
+
+@media (max-width: 1400px) {
+    .logo-standalone {
+        position: absolute;
+        left: 2rem;
+        transform: none;
+    }
 }
 
 @media (max-width: 1024px) {
@@ -183,6 +226,44 @@ header {
 }
 
 @media (max-width: 768px) {
+    header {
+        position: relative; /* Changed from static to relative for positioning context */
+        top: auto;
+        padding: 1rem 1rem;
+        height: auto;
+        min-height: 140px;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin-top: 3rem; /* Increased space for urgency banner */
+    }
+    
+    .logo-standalone {
+        position: static !important; /* Override desktop fixed positioning */
+        left: auto !important;
+        top: auto !important;
+        transform: none !important; /* Reset transform */
+        display: flex;
+        justify-content: center;
+        margin: 1.5rem auto 0; /* Add top margin to create space from banner */
+        z-index: auto;
+    }
+    
+    .logo-standalone .logo-image {
+        height: 100px; /* Slightly smaller on mobile */
+    }
+    
+    .main-nav {
+        position: fixed;
+        top: calc(3rem + 50px); /* Position relative to banner + half of logo height */
+        right: 1rem;
+        width: auto;
+        padding: 0.5rem;
+        border-radius: 50%;
+        z-index: 1001;
+        transition: transform 0.3s ease-in-out;
+    }
+    
     .mobile-menu-toggle {
         display: flex;
     }
@@ -235,12 +316,56 @@ header {
     }
 }
 
+/* Urgency Banner */
+.urgency-banner {
+    background: var(--secondary-color);
+    color: var(--primary-color);
+    text-align: center;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1001;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.urgency-banner p {
+    margin: 0;
+}
+
+.urgency-banner a {
+    color: var(--primary-color);
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.urgency-banner a:hover {
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .urgency-banner {
+        font-size: 0.875rem;
+        padding: 0.625rem 0.75rem;
+    }
+    
+
+}
+
 /* Hero Section */
 .hero {
-    padding-top: calc(6rem + 80px);
+    padding-top: calc(8.75rem + 80px); /* Added banner height */
     padding-bottom: 4rem;
     background: var(--background-light);
     position: relative;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding-top: 2rem;
+    }
 }
 
 .hero-content {
@@ -441,6 +566,9 @@ header {
     height: 240px;
     overflow: hidden;
     background: linear-gradient(135deg, var(--secondary-color) 0%, #e5c29f 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .testimonial-image img {
@@ -471,6 +599,16 @@ header {
     right: 0;
     bottom: 0;
     background: linear-gradient(to bottom, rgba(52, 211, 153, 0.2), rgba(52, 211, 153, 0.4));
+}
+
+.testimonial-type {
+    position: relative;
+    z-index: 10;
+    color: white;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .testimonial-content {
@@ -527,12 +665,51 @@ header {
 }
 
 @media (max-width: 768px) {
+    .testimonials {
+        padding: 3rem 0;
+    }
+    
+    .testimonials-title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+    
     .testimonials-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 1rem;
     }
 
     .testimonial-image {
         height: 200px;
+    }
+}
+
+@media (max-width: 380px) {
+    .testimonials-grid {
+        padding: 0 0.5rem;
+        gap: 1rem;
+    }
+    
+    .testimonial-card {
+        padding: 0;
+    }
+    
+    .testimonial-image {
+        height: 150px;
+    }
+    
+    .testimonial-content {
+        padding: 1.25rem;
+    }
+    
+    .testimonial-content h3 {
+        font-size: 1.1rem;
+    }
+    
+    .testimonial-description {
+        font-size: 0.875rem;
     }
 }
 
@@ -567,6 +744,28 @@ header {
     margin-bottom: 0;
 }
 
+.cta-options {
+    margin-top: 2rem;
+}
+
+.cta-divider {
+    margin: 1rem 0;
+    color: var(--light-text);
+    font-size: 0.9rem;
+}
+
+.secondary-cta {
+    color: var(--text-color);
+    text-decoration: underline;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.secondary-cta:hover {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
 .primary-button {
     display: inline-block;
     background: var(--secondary-color);
@@ -586,6 +785,64 @@ header {
     border-color: var(--primary-color);
     transform: translateY(-2px);
     box-shadow: 0 10px 20px rgba(26, 26, 26, 0.2);
+}
+
+/* Trust Signals Section */
+.trust-signals {
+    padding: 3rem 0;
+    background: white;
+    border-top: 1px solid #e5e7eb;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.trust-badges {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.trust-badge {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--text-color);
+}
+
+.badge-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--background-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+}
+
+.trust-badge p {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+@media (max-width: 768px) {
+    .trust-badges {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+    
+    .trust-badge {
+        flex-direction: column;
+        text-align: center;
+    }
 }
 
 /* Benefits Section */
@@ -662,8 +919,9 @@ header {
 
     .benefits-title,
     .benefits-subtitle {
-        font-size: 2.5rem;
+        font-size: 1.75rem;
         padding: 0 1rem;
+        line-height: 1.2;
     }
 }
 
@@ -859,6 +1117,53 @@ header {
     text-align: center;
 }
 
+@media (max-width: 768px) {
+    .pain-points {
+        padding: 3rem 0;
+    }
+    
+    .pain-title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        padding: 0 1rem;
+    }
+    
+    .pain-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+    
+    .pain-item h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .pain-item p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+}
+
+@media (max-width: 380px) {
+    .pain-grid {
+        padding: 0 0.5rem;
+        gap: 1rem;
+    }
+    
+    .pain-item {
+        padding: 1.5rem;
+    }
+    
+    .pain-item h3 {
+        font-size: 1.1rem;
+    }
+    
+    .pain-item p {
+        font-size: 0.875rem;
+    }
+}
+
 .pain-title {
     font-size: 3rem;
     font-weight: 700;
@@ -904,6 +1209,7 @@ header {
 .pain-item p {
     color: var(--light-text);
     line-height: 1.6;
+    font-size: 1rem;
 }
 
 .pain-solution {
@@ -1037,9 +1343,14 @@ footer {
         display: none;
     }
     
+    .nav-links.active {
+        display: flex;
+    }
+    
     .hero-content {
         grid-template-columns: 1fr;
         gap: 2rem;
+        padding: 0 1rem;
     }
     
     .hero-text {
@@ -1373,8 +1684,9 @@ blockquote cite {
 
 /* Comparison Section */
 .comparison {
-    padding: 6rem 0;
+    padding: 6rem 2rem;
     background: var(--background-light);
+    overflow-x: hidden;
 }
 
 .comparison-title {
@@ -1388,22 +1700,28 @@ blockquote cite {
 .comparison-grid {
     background: white;
     border-radius: 12px;
-    overflow: hidden;
+    overflow: visible;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-    margin: 0 auto;
-    max-width: 1000px;
+    margin: 2rem auto 0;
+    max-width: 1200px;
+    width: 100%;
+    position: relative;
 }
 
 .comparison-header {
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    grid-template-columns: 200px minmax(200px, 1fr) minmax(200px, 1fr) minmax(200px, 1fr);
     background: var(--background-light);
     border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    border-radius: 12px 12px 0 0;
+    overflow: visible;
 }
 
 .comparison-header .comparison-cell {
-    padding: 2rem;
+    padding: 2.5rem 2rem 2rem;
     text-align: center;
+    position: relative;
+    overflow: visible;
 }
 
 .comparison-header h3 {
@@ -1425,7 +1743,7 @@ blockquote cite {
 
 .comparison-row {
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    grid-template-columns: 200px minmax(200px, 1fr) minmax(200px, 1fr) minmax(200px, 1fr);
     border-bottom: 1px solid rgba(0, 0, 0, 0.04);
     transition: all 0.3s ease;
 }
@@ -1436,6 +1754,8 @@ blockquote cite {
 
 .comparison-row:last-child {
     border-bottom: none;
+    border-radius: 0 0 12px 12px;
+    overflow: hidden;
 }
 
 .comparison-label {
@@ -1478,6 +1798,10 @@ blockquote cite {
 }
 
 .recommended-badge {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
     display: inline-block;
     background: var(--secondary-color);
     color: var(--white);
@@ -1485,9 +1809,9 @@ blockquote cite {
     font-weight: 600;
     padding: 0.25rem 0.75rem;
     border-radius: 16px;
-    margin-bottom: 0.5rem;
     letter-spacing: 0.05em;
     opacity: 0.9;
+    z-index: 10;
 }
 
 .price {
@@ -1576,6 +1900,11 @@ blockquote cite {
     color: var(--text-color);
 }
 
+/* Hide mobile-only CTAs on desktop */
+.comparison-cta.mobile-only {
+    display: none;
+}
+
 /* Tablet styles */
 @media (max-width: 1024px) {
     .comparison-grid {
@@ -1596,29 +1925,50 @@ blockquote cite {
     }
 }
 
-/* Mobile styles - Horizontal scroll */
-@media (max-width: 768px) {
+/* Intermediate breakpoint for better table handling */
+@media (max-width: 900px) {
+    .comparison-header,
+    .comparison-row {
+        grid-template-columns: 180px 1fr 1fr 1fr;
+    }
+    
+    .comparison-cell {
+        padding: 1rem 0.75rem;
+        font-size: 0.875rem;
+    }
+    
+    .comparison-label {
+        padding: 1rem 0.75rem;
+        font-size: 0.875rem;
+    }
+}
+
+/* Tablet to mobile transition - Horizontal scroll */
+@media (max-width: 768px) and (min-width: 601px) {
     .comparison {
-        padding: 3rem 0;
+        padding: 3rem 1rem;
     }
     
     .comparison-title {
         font-size: 2rem;
-        padding: 0 1rem;
+        padding: 0;
         margin-bottom: 2rem;
     }
     
     .comparison-grid {
-        margin: 0 1rem;
+        margin: 0;
         font-size: 0.875rem;
         overflow-x: auto;
+        overflow-y: visible;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: thin;
+        padding-top: 1rem; /* Space for badge */
     }
     
     .comparison-header,
     .comparison-row {
-        min-width: 650px;
+        min-width: 700px;
+        grid-template-columns: 160px minmax(180px, 1fr) minmax(180px, 1fr) minmax(180px, 1fr);
     }
 
     .comparison-header h3 {
@@ -1627,6 +1977,11 @@ blockquote cite {
 
     .comparison-cell {
         padding: 1rem 0.75rem;
+        position: relative;
+    }
+    
+    .comparison-header .comparison-cell {
+        padding-top: 1.5rem; /* Extra space for badge */
     }
     
     .comparison-label {
@@ -1650,6 +2005,11 @@ blockquote cite {
     .recommended-badge {
         font-size: 0.6rem;
         padding: 0.2rem 0.5rem;
+        position: absolute;
+        top: -0.8rem;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10;
     }
     
     .comparison-cta {
@@ -1675,63 +2035,71 @@ blockquote cite {
     50% { transform: translateX(5px); }
 }
 
-/* Very small mobile - Card layout */
-@media (max-width: 480px) {
+/* Mobile card layout - switch earlier for better UX */
+@media (max-width: 600px) {
+    .comparison {
+        padding: 3rem 1rem;
+    }
+    
+    .comparison-title {
+        text-align: center;
+        margin-top: 2rem;
+        padding: 0;
+    }
+    
     .comparison-grid {
-        display: block;
-        overflow: visible;
-        box-shadow: none;
-        background: transparent;
+        display: block !important;
+        overflow: visible !important;
+        box-shadow: none !important;
+        background: transparent !important;
+        margin: 2rem 0 0;
+        padding: 0;
     }
     
     .comparison-header {
-        display: none;
+        display: none !important;
     }
     
     .comparison-row {
-        display: block;
+        display: block !important;
         margin-bottom: 1rem;
-        background: white;
-        border-radius: 12px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-        padding: 1.5rem;
-        border-bottom: none;
+        min-width: 100%;
     }
     
-    .comparison-row:hover {
-        background: white;
+    .comparison-row:last-child {
+        margin-bottom: 0;
     }
     
     .comparison-label {
-        display: block;
-        background: transparent;
-        padding: 0;
-        margin-bottom: 1rem;
-        font-weight: 600;
-        font-size: 1rem;
-        text-align: left;
+        font-weight: 700;
+        font-size: 1.1rem;
         color: var(--text-color);
-    }
-    
-    .comparison-cell {
-        display: block;
-        padding: 0;
         margin-bottom: 1rem;
+        margin-top: 1.5rem;
         text-align: left;
+        padding: 0;
+        display: block;
     }
     
-    .comparison-cell.highlighted {
-        background: transparent;
-        padding: 1rem;
-        border-radius: 8px;
-        margin: -1rem -1rem 1rem -1rem;
+    .comparison-row:first-child .comparison-label {
+        margin-top: 0;
     }
     
-    .comparison-cell.highlighted::before {
-        display: none;
+    .comparison-row .comparison-cell {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        margin-bottom: 1rem;
+        min-height: auto;
+        position: relative;
+        display: block;
     }
     
-    /* Mobile card headers */
+    .comparison-row .comparison-cell:last-child {
+        margin-bottom: 0;
+    }
+    
     .comparison-cell::before {
         content: attr(data-label);
         display: block;
@@ -1743,28 +2111,76 @@ blockquote cite {
         letter-spacing: 0.05em;
     }
     
-    .price {
+    .comparison-cell.highlighted {
+        background: white;
+        border: 2px solid var(--secondary-color);
+        box-shadow: 0 4px 16px rgba(212, 165, 116, 0.15);
+        padding: calc(1.5rem - 2px); /* Compensate for border */
+    }
+    
+    /* Fix icon and text layout on mobile */
+    .comparison-cell .price {
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+    
+    .comparison-cell .detail {
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+    
+    .comparison-cell .check-icon,
+    .comparison-cell .cross-icon {
         display: inline-block;
-        margin-right: 0.5rem;
-    }
-    
-    .detail {
-        display: inline;
-    }
-    
-    .check-icon, .cross-icon {
-        width: 20px;
-        height: 20px;
-        margin-bottom: 0;
-        margin-right: 0.5rem;
         vertical-align: middle;
-        display: inline-block;
+        margin-right: 0.5rem;
     }
     
     .cta-row {
-        background: white;
-        padding: 1.5rem;
-        margin-top: 2rem;
+        display: none !important;
+    }
+    
+    /* Show mobile-only CTAs in card layout */
+    .comparison-cta.mobile-only {
+        display: inline-block;
+        margin-top: 1rem;
+        width: 100%;
+        text-align: center;
+    }
+    
+    /* Hide the swipe hint on card layout */
+    .comparison::after {
+        display: none;
+    }
+    
+    /* Hide recommended badge on mobile */
+    .recommended-badge {
+        display: none;
+    }
+}
+
+@media (max-width: 380px) {
+    .comparison-cell {
+        padding: 1rem;
+        margin-bottom: 0.75rem;
+        border-radius: 8px;
+    }
+    
+    .comparison-cell h3 {
+        font-size: 1rem;
+    }
+    
+    .price {
+        font-size: 1.25rem;
+    }
+    
+    .detail {
+        font-size: 0.75rem;
+    }
+    
+    .comparison-cta {
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
     }
     
     .cta-row .comparison-cell {
@@ -1874,6 +2290,23 @@ blockquote cite {
     .feature-card {
         padding: 1.5rem;
     }
+    
+    .feature-card h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .feature-card p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+        padding: 0 1rem;
+        line-height: 1.2;
+        margin-bottom: 2rem;
+    }
 }
 
 /* Companies We Serve Section */
@@ -1885,25 +2318,191 @@ blockquote cite {
 .company-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 1.5rem;
     justify-content: center;
+    align-items: center;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 1rem;
+    line-height: 1;
 }
 
 .company-tags .tag {
-    padding: 0.75rem 1.5rem;
-    border-radius: 100px;
+    padding: 0.875rem 1.75rem;
+    border-radius: 50px;
     font-size: 1rem;
     font-weight: 500;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.2s ease;
     cursor: default;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* Extra small pills - lowest priority services */
+.company-tags .tag:nth-child(11), /* Patio Covers */
+.company-tags .tag:nth-child(17), /* Pool Decking */
+.company-tags .tag:nth-child(35), /* Window Cleaning */
+.company-tags .tag:nth-child(53), /* Auto Detailing */
+.company-tags .tag:nth-child(55), /* Dog Walking */
+.company-tags .tag:nth-child(56) { /* Pooper Scooper */
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 400;
+    opacity: 0.9;
+}
+
+/* Small pills - less priority services */
+.company-tags .tag:nth-child(4),  /* Decorative Concrete */
+.company-tags .tag:nth-child(13), /* Cabinet Refinishing */
+.company-tags .tag:nth-child(15), /* Stucco & Siding */
+.company-tags .tag:nth-child(24), /* Pest Control */
+.company-tags .tag:nth-child(33), /* Carpet Cleaning */
+.company-tags .tag:nth-child(34), /* Junk Removal */
+.company-tags .tag:nth-child(40), /* Demolition Contractor */
+.company-tags .tag:nth-child(48), /* Janitorial Services */
+.company-tags .tag:nth-child(50), /* Chimney Sweep Services */
+.company-tags .tag:nth-child(51), /* Cleaning */
+.company-tags .tag:nth-child(54) { /* Snow Removal */
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+/* Medium-small pills - slight variation */
+.company-tags .tag:nth-child(3),  /* Concrete Driveways */
+.company-tags .tag:nth-child(18), /* Outdoor Kitchens */
+.company-tags .tag:nth-child(25), /* Pressure Washing */
+.company-tags .tag:nth-child(36), /* Flooring */
+.company-tags .tag:nth-child(37), /* Drywall */
+.company-tags .tag:nth-child(38), /* Tiling */
+.company-tags .tag:nth-child(43), /* Pool & Spa Services */
+.company-tags .tag:nth-child(45), /* Property Maintenance */
+.company-tags .tag:nth-child(52) { /* Carpentry */
+    padding: 0.8rem 1.6rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+/* Medium pills - standard services use default styling:
+   Custom Decks, Custom Builders, Lawn Care, Tree Care, Garage Door Services,
+   Fence Services, Appliance Repair, Excavation, Paving, Restoration,
+   Installation Services, Irrigation Services, Locksmith Services */
+
+/* Large pills - priority services (more subtle) */
+.company-tags .tag:nth-child(1),  /* Interior Painting */
+.company-tags .tag:nth-child(5),  /* Artificial Turf */
+.company-tags .tag:nth-child(9),  /* Home Additions */
+.company-tags .tag:nth-child(14), /* Epoxy Flooring */
+.company-tags .tag:nth-child(28), /* Handyman */
+.company-tags .tag:nth-child(39) { /* General Contracting */
+    padding: 0.95rem 1.9rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+/* Extra large pills - high-value services (more subtle) */
+.company-tags .tag:nth-child(2),  /* Exterior Painting */
+.company-tags .tag:nth-child(6),  /* Hardscaping */
+.company-tags .tag:nth-child(7),  /* Kitchen Remodeling */
+.company-tags .tag:nth-child(8),  /* Bath Remodeling */
+.company-tags .tag:nth-child(12), /* Full Renovations */
+.company-tags .tag:nth-child(19), /* HVAC */
+.company-tags .tag:nth-child(20), /* Plumbing */
+.company-tags .tag:nth-child(21), /* Electrical Contracting */
+.company-tags .tag:nth-child(22), /* Roofing */
+.company-tags .tag:nth-child(23) { /* Pest Control - moved to high value */
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Mobile responsiveness for service pills */
+@media (max-width: 768px) {
+    .company-tags {
+        gap: 1rem;
+        padding: 0 0.5rem;
+    }
+    
+    /* Make all pills more touch-friendly on mobile */
+    .company-tags .tag {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9rem;
+        min-height: 44px; /* iOS touch target minimum */
+    }
+    
+    /* Adjust extra small pills for mobile */
+    .company-tags .tag:nth-child(11),
+    .company-tags .tag:nth-child(17),
+    .company-tags .tag:nth-child(35),
+    .company-tags .tag:nth-child(53),
+    .company-tags .tag:nth-child(55),
+    .company-tags .tag:nth-child(56) {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.8rem;
+    }
+    
+    /* Adjust small pills for mobile */
+    .company-tags .tag:nth-child(4),
+    .company-tags .tag:nth-child(13),
+    .company-tags .tag:nth-child(15),
+    .company-tags .tag:nth-child(24),
+    .company-tags .tag:nth-child(33),
+    .company-tags .tag:nth-child(34),
+    .company-tags .tag:nth-child(40),
+    .company-tags .tag:nth-child(48),
+    .company-tags .tag:nth-child(50),
+    .company-tags .tag:nth-child(51),
+    .company-tags .tag:nth-child(54) {
+        padding: 0.65rem 1.3rem;
+        font-size: 0.85rem;
+    }
+    
+    /* Adjust large pills for mobile */
+    .company-tags .tag:nth-child(1),
+    .company-tags .tag:nth-child(5),
+    .company-tags .tag:nth-child(9),
+    .company-tags .tag:nth-child(14),
+    .company-tags .tag:nth-child(28),
+    .company-tags .tag:nth-child(39) {
+        padding: 0.8rem 1.6rem;
+        font-size: 0.95rem;
+    }
+    
+    /* Adjust extra large pills for mobile */
+    .company-tags .tag:nth-child(2),
+    .company-tags .tag:nth-child(6),
+    .company-tags .tag:nth-child(7),
+    .company-tags .tag:nth-child(8),
+    .company-tags .tag:nth-child(12),
+    .company-tags .tag:nth-child(19),
+    .company-tags .tag:nth-child(20),
+    .company-tags .tag:nth-child(21),
+    .company-tags .tag:nth-child(22),
+    .company-tags .tag:nth-child(23) {
+        padding: 0.85rem 1.7rem;
+        font-size: 1rem;
+    }
 }
 
 .company-tags .tag:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    border-color: currentColor;
+}
+
+/* Extra large pills hover effect */
+.company-tags .tag:nth-child(8):hover,
+.company-tags .tag:nth-child(12):hover,
+.company-tags .tag:nth-child(18):hover {
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
 }
 
 .tag.blue {
@@ -1932,9 +2531,50 @@ blockquote cite {
 }
 
 @media (max-width: 768px) {
+    .company-tags {
+        gap: 0.5rem;
+        padding: 0 1rem;
+    }
+    
     .company-tags .tag {
         font-size: 0.875rem;
+        padding: 0.625rem 1.125rem;
+    }
+    
+    /* Maintain emphasis on key services */
+    .company-tags .tag:nth-child(3),
+    .company-tags .tag:nth-child(7),
+    .company-tags .tag:nth-child(9),
+    .company-tags .tag:nth-child(12),
+    .company-tags .tag:nth-child(16) {
+        padding: 0.75rem 1.375rem;
+        font-size: 0.95rem;
+    }
+    
+    .company-tags .tag:hover {
+        transform: translateY(-2px) scale(1.03);
+    }
+}
+
+@media (max-width: 480px) {
+    .company-tags {
+        gap: 0.4rem;
+        padding: 0 0.75rem;
+    }
+    
+    .company-tags .tag {
+        font-size: 0.8rem;
         padding: 0.5rem 1rem;
+    }
+    
+    /* Subtle emphasis maintained on mobile */
+    .company-tags .tag:nth-child(3),
+    .company-tags .tag:nth-child(7),
+    .company-tags .tag:nth-child(9),
+    .company-tags .tag:nth-child(12),
+    .company-tags .tag:nth-child(16) {
+        padding: 0.625rem 1.125rem;
+        font-size: 0.875rem;
     }
 }
 
@@ -2049,4 +2689,11 @@ textarea.error {
 
 .success-message p {
     color: #047857;
+}
+
+@media (max-width: 768px) {
+    .logo-standalone {
+        display: flex;
+        justify-content: center;
+    }
 }

@@ -15,26 +15,53 @@
     <meta property="og:url" content="https://estimatewave.com/">
     <meta property="og:title" content="Estimate Wave - Where Trust Meets Opportunity for Contractors">
     <meta property="og:description" content="Transform your contracting business. Build trust, attract premium clients, and command higher prices.">
-    <meta property="og:image" content="images/og-image.jpg">
+    <meta property="og:image" content="og-image.jpg">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://estimatewave.com/">
     <meta property="twitter:title" content="Estimate Wave - Where Trust Meets Opportunity for Contractors">
     <meta property="twitter:description" content="Transform your contracting business. Build trust, attract premium clients, and command higher prices.">
-    <meta property="twitter:image" content="https://estimatewave.com/images/og-image.jpg">
+    <meta property="twitter:image" content="https://estimatewave.com/og-image.jpg">
     
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.ico">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "MarketingAgency",
+        "name": "Estimate Wave",
+        "description": "Reputation management and lead generation for contractors. Build trust, attract premium clients, and command higher prices.",
+        "url": "https://estimatewave.com",
+        "telephone": "",
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US"
+        },
+        "sameAs": [],
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "reviewCount": "127"
+        }
+    }
+    </script>
 </head>
 <body>
+    <div class="urgency-banner">
+        <p><strong>Limited Availability:</strong> Currently accepting 3 new contractors this month • <a href="#contact">Claim Your Territory →</a></p>
+    </div>
+    
     <header>
+        <div class="logo-standalone">
+            <img src="images/logo_1.png" alt="Estimate Wave - Contractor Reputation Management" class="logo-image">
+        </div>
         <nav class="main-nav">
-            <div class="logo">
-                <img src="images/logo_1.png" alt="Estimate Wave" class="logo-image">
-            </div>
             <div class="nav-links">
                 <div class="nav-menu">
                     <a href="#testimonials">Testimonials</a>
@@ -51,7 +78,7 @@
             </button>
         </nav>
     </header>
-
+    
     <section class="hero">
         <div class="container">
             <div class="hero-content">
@@ -75,8 +102,8 @@
             </div>
             <div class="stats">
                 <div class="stat-item">
-                    <h3>4.8+</h3>
-                    <p>Average Star Rating Maintained</p>
+                    <h3>10-15</h3>
+                    <p>Local FB Groups Per Client</p>
                 </div>
                 <div class="stat-item">
                     <h3>$12.3K</h3>
@@ -132,6 +159,37 @@
             </div>
         </div>
     </div>
+
+    <section class="trust-signals">
+        <div class="container">
+            <div class="trust-badges">
+                <div class="trust-badge">
+                    <div class="badge-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <p>100% Privacy<br>Protected</p>
+                </div>
+                <div class="trust-badge">
+                    <div class="badge-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <p>8 Contractors<br>Transformed</p>
+                </div>
+                <div class="trust-badge">
+                    <div class="badge-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <p>15-20 Leads<br>Per Month</p>
+                </div>
+                <div class="trust-badge">
+                    <div class="badge-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <p>Month-to-Month<br>No Contracts</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section class="benefits">
         <div class="container">
@@ -204,7 +262,7 @@
                     <p>Position yourself as the premium choice homeowners trust.</p>
                 </div>
             </div>
-            <p class="pain-solution">We handle it all.</p>
+            <p class="pain-solution">Your reputation becomes your unfair advantage.</p>
         </div>
     </section>
 
@@ -336,14 +394,17 @@
                     <div class="comparison-cell highlighted" data-label="Estimate Wave">
                         <div class="price">73%</div>
                         <span class="detail">Pre-qualified leads</span>
+                        <a href="#contact" class="comparison-cta primary mobile-only">Start Building Trust</a>
                     </div>
                     <div class="comparison-cell" data-label="Traditional Paid Ads">
                         <div class="price">10-20%</div>
                         <span class="detail">Industry average</span>
+                        <a href="#contact" class="comparison-cta secondary mobile-only">Get Started</a>
                     </div>
                     <div class="comparison-cell" data-label="In-House Posting">
                         <div class="price">5-15%</div>
                         <span class="detail">Highly variable</span>
+                        <a href="#contact" class="comparison-cta secondary mobile-only">Get Started</a>
                     </div>
                 </div>
                 
@@ -353,10 +414,10 @@
                         <a href="#contact" class="comparison-cta primary">Start Building Trust</a>
                     </div>
                     <div class="comparison-cell" data-label="Traditional Paid Ads">
-                        <a href="#" class="comparison-cta secondary">Learn More</a>
+                        <a href="#contact" class="comparison-cta secondary">Get Started</a>
                     </div>
                     <div class="comparison-cell" data-label="In-House Posting">
-                        <a href="#" class="comparison-cta secondary">Learn More</a>
+                        <a href="#contact" class="comparison-cta secondary">Get Started</a>
                     </div>
                 </div>
             </div>
@@ -370,42 +431,45 @@
             <div class="testimonials-grid">
                 <a href="case-study-premier-painting.html" class="testimonial-card-link">
                     <div class="testimonial-card">
-                        <div class="testimonial-image">
+                        <div class="testimonial-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
                             <div class="testimonial-overlay"></div>
+                            <span class="testimonial-type">PAINTING</span>
                         </div>
                         <div class="testimonial-content">
                             <h3>Premier Painting Co.</h3>
                             <p class="testimonial-highlight">From 3.5 to 4.9 Stars in 90 Days</p>
                             <p class="testimonial-description">"We went from struggling with one bad review to being booked solid with $20K+ exterior projects. Game changer for our reputation."</p>
-                            <span class="read-more">Read Case Study <span>→</span></span>
+                            <span class="read-more">View Full Story <span>→</span></span>
                         </div>
                     </div>
                 </a>
 
                 <a href="case-study-elite-concrete.html" class="testimonial-card-link">
                     <div class="testimonial-card">
-                        <div class="testimonial-image">
+                        <div class="testimonial-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
                             <div class="testimonial-overlay"></div>
+                            <span class="testimonial-type">CONCRETE</span>
                         </div>
                         <div class="testimonial-content">
                             <h3>Elite Concrete & Turf</h3>
                             <p class="testimonial-highlight">Booked Solid with $15K+ Driveways</p>
                             <p class="testimonial-description">"No more tire kickers. Every estimate is a serious buyer who already trusts us. We're booked out 3 months ahead now."</p>
-                            <span class="read-more">Read Case Study <span>→</span></span>
+                            <span class="read-more">View Full Story <span>→</span></span>
                         </div>
                     </div>
                 </a>
 
                 <a href="case-study-apex-builders.html" class="testimonial-card-link">
                     <div class="testimonial-card">
-                        <div class="testimonial-image">
+                        <div class="testimonial-image" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
                             <div class="testimonial-overlay"></div>
+                            <span class="testimonial-type">BUILDERS</span>
                         </div>
                         <div class="testimonial-content">
                             <h3>Apex Home Builders</h3>
                             <p class="testimonial-highlight">$240K Addition from One Referral</p>
                             <p class="testimonial-description">"Being THE trusted builder in our community means homeowners come to us ready to invest. No more bidding wars."</p>
-                            <span class="read-more">Read Case Study <span>→</span></span>
+                            <span class="read-more">View Full Story <span>→</span></span>
                         </div>
                     </div>
                 </a>
@@ -512,6 +576,45 @@
                 <div class="tag blue">Custom Builders</div>
                 <div class="tag green">Pool Decking</div>
                 <div class="tag yellow">Outdoor Kitchens</div>
+                <div class="tag blue">HVAC</div>
+                <div class="tag purple">Plumbing</div>
+                <div class="tag green">Electrical Contracting</div>
+                <div class="tag yellow">Roofing</div>
+                <div class="tag pink">Pest Control</div>
+                <div class="tag blue">Pressure Washing</div>
+                <div class="tag purple">Lawn Care</div>
+                <div class="tag green">Tree Care</div>
+                <div class="tag yellow">Handyman</div>
+                <div class="tag pink">Garage Door Services</div>
+                <div class="tag blue">Fence Services</div>
+                <div class="tag purple">Appliance Repair</div>
+                <div class="tag green">Carpet Cleaning</div>
+                <div class="tag yellow">Junk Removal</div>
+                <div class="tag pink">Window Cleaning</div>
+                <div class="tag blue">Flooring</div>
+                <div class="tag purple">Drywall</div>
+                <div class="tag green">Tiling</div>
+                <div class="tag yellow">General Contracting</div>
+                <div class="tag pink">Demolition Contractor</div>
+                <div class="tag blue">Excavation</div>
+                <div class="tag purple">Paving</div>
+                <div class="tag green">Pool & Spa Services</div>
+                <div class="tag yellow">Restoration</div>
+                <div class="tag pink">Property Maintenance</div>
+                <div class="tag blue">Installation Services</div>
+                <div class="tag purple">Irrigation Services</div>
+                <div class="tag green">Mechanical Contracting</div>
+                <div class="tag yellow">Janitorial Services</div>
+                <div class="tag pink">Locksmith Services</div>
+                <div class="tag blue">Chimney Sweep Services</div>
+                <div class="tag purple">Cleaning</div>
+                <div class="tag green">Carpentry</div>
+                <div class="tag yellow">Auto Detailing</div>
+                <div class="tag pink">Snow Removal</div>
+                <div class="tag blue">Well Water Services</div>
+                <div class="tag purple">Elevator Services</div>
+                <div class="tag green">Dog Walking</div>
+                <div class="tag yellow">Pooper Scooper</div>
             </div>
         </div>
     </section>
@@ -561,7 +664,7 @@
                             </svg>
                         </button>
                         <div class="faq-answer">
-                            <p>Our contractors typically see projects averaging $10K-15K because homeowners who find you through trusted community recommendations are ready to invest in quality work.</p>
+                            <p>Our contractors typically see projects averaging $12.3K because homeowners who find you through trusted community recommendations are ready to invest in quality work. Many projects range from $8K-$20K depending on scope.</p>
                         </div>
                     </div>
 
@@ -659,23 +762,23 @@
             <div class="service-steps">
                 <div class="step">
                     <div class="step-number">01</div>
-                    <h3>Reputation Audit</h3>
-                    <p>We analyze your current online presence and identify opportunities to strengthen your market position</p>
+                    <h3>Deep Reputation Analysis</h3>
+                    <p>We audit your Google reviews, social presence, and community sentiment to create your custom reputation roadmap within 48 hours</p>
                 </div>
                 <div class="step">
                     <div class="step-number">02</div>
-                    <h3>Trust Building</h3>
-                    <p>Strategic placement in communities where homeowners actively seek quality contractors like you</p>
+                    <h3>Community Integration</h3>
+                    <p>Get featured in 10-15 local Facebook groups where homeowners actively seek contractor recommendations - we handle all engagement</p>
                 </div>
                 <div class="step">
                     <div class="step-number">03</div>
-                    <h3>Authority Positioning</h3>
-                    <p>Showcase your expertise and craftsmanship in ways that resonate with premium homeowners</p>
+                    <h3>Trust Asset Creation</h3>
+                    <p>We showcase your best work with before/after galleries, client success stories, and expert tips that position you as THE go-to contractor</p>
                 </div>
                 <div class="step">
                     <div class="step-number">04</div>
-                    <h3>Qualified Introductions</h3>
-                    <p>Homeowners reach out already trusting you - no cold calls, just warm conversations about their projects</p>
+                    <h3>Pre-Qualified Leads Delivered</h3>
+                    <p>Receive 15-20 warm leads monthly from homeowners who already know your pricing, have seen your work, and are ready to hire YOU specifically</p>
                 </div>
             </div>
         </div>
@@ -691,7 +794,11 @@
                 <li>Build a reputation that generates referrals automatically</li>
                 <li>Focus on your craft while we handle your online presence</li>
             </ul>
-            <a href="book-call.html" class="primary-button">Schedule Your Reputation Audit</a>
+            <div class="cta-options">
+                <a href="book-call.html" class="primary-button">Schedule Your Reputation Audit</a>
+                <p class="cta-divider">or</p>
+                <a href="#faq" class="secondary-cta">Have Questions? See Our FAQ →</a>
+            </div>
         </div>
     </section>
 
@@ -699,13 +806,13 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="images/logo_1.png" alt="Estimate Wave" class="footer-logo-image">
+                    <img src="images/logo_1.png" alt="Estimate Wave Logo" class="footer-logo-image">
                     <p>Where Trust Meets Opportunity for Contractors</p>
                 </div>
                 <div class="footer-links">
-                    <a href="#about">About</a>
+                    <a href="#why-us">Why Us</a>
                     <a href="#services">Services</a>
-                    <a href="#results">Results</a>
+                    <a href="#testimonials">Results</a>
                     <a href="#contact">Contact</a>
                 </div>
             </div>

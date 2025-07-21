@@ -1,5 +1,5 @@
 let lastScrollTop = 0;
-const header = document.querySelector('header');
+const mainNav = document.querySelector('.main-nav');
 const SCROLL_THRESHOLD = 50; // Amount of scroll before hiding nav
 
 window.addEventListener('scroll', () => {
@@ -8,10 +8,15 @@ window.addEventListener('scroll', () => {
     // Show/hide based on scroll direction
     if (scrollTop > lastScrollTop && scrollTop > SCROLL_THRESHOLD) {
         // Scrolling down & past threshold - hide nav
-        header.style.transform = 'translateY(-150%)';
+        // On mobile, we need to move it further to account for fixed positioning
+        if (window.innerWidth <= 768) {
+            mainNav.style.transform = 'translateX(150%)'; // Move right off screen on mobile
+        } else {
+            mainNav.style.transform = 'translateY(-150%)';
+        }
     } else {
         // Scrolling up or at top - show nav
-        header.style.transform = 'translateY(0)';
+        mainNav.style.transform = 'translateY(0) translateX(0)';
     }
     
     lastScrollTop = scrollTop;
