@@ -19,10 +19,16 @@ document.addEventListener('DOMContentLoaded', function() {
                     body.appendChild(navLinks);
                     // Force reflow to ensure styles are applied
                     navLinks.offsetHeight;
+                    // Reset any inline styles that might interfere
+                    navLinks.style.position = '';
+                    navLinks.style.top = '';
+                    navLinks.style.transform = '';
                     // Add the active class after a small delay to ensure proper positioning
-                    setTimeout(() => {
-                        navLinks.classList.add('active');
-                    }, 10);
+                    requestAnimationFrame(() => {
+                        requestAnimationFrame(() => {
+                            navLinks.classList.add('active');
+                        });
+                    });
                 } else {
                     // Closing menu
                     navLinks.classList.remove('active');

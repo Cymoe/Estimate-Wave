@@ -165,16 +165,36 @@ header {
     font-weight: 600;
     text-decoration: none;
     font-size: 1rem;
-    transition: all 0.3s ease !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
     margin-left: auto;
     white-space: nowrap;
     border: 2px solid var(--secondary-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.book-call-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.5s ease;
 }
 
 .book-call-btn:hover {
     background-color: transparent;
     color: var(--secondary-color) !important;
     box-shadow: 0 4px 12px rgba(212, 165, 116, 0.3);
+    transform: scale(1.05);
+}
+
+.book-call-btn:hover::after {
+    transform: translate(-50%, -50%) scale(2);
 }
 
 @media (max-width: 1400px) {
@@ -312,13 +332,21 @@ header {
             width: calc(100% - 2rem) !important;
             max-width: 400px !important;
             max-height: calc(100vh - 8rem) !important;
+            max-height: calc(100dvh - 8rem) !important; /* Use dynamic viewport height */
             overflow-y: auto !important;
             -webkit-overflow-scrolling: touch !important;
+            contain: layout style; /* Prevent layout shifts */
         }
         
         .main-nav .nav-links.active,
         body > .nav-links.active {
             transform: translateX(-50%) translateY(0) scale(1) !important;
+        }
+        
+        /* Ensure menu is never cut off */
+        body > .nav-links {
+            bottom: 1rem;
+            height: auto;
         }
     }
     
@@ -486,6 +514,25 @@ header {
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+.video-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: white;
 }
 
 .stats {
@@ -632,13 +679,31 @@ header {
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     cursor: pointer;
+    position: relative;
+}
+
+.testimonial-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(212, 165, 116, 0.05) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
 }
 
 .testimonial-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.testimonial-card:hover::before {
+    opacity: 1;
 }
 
 .testimonial-image {
@@ -854,17 +919,38 @@ header {
     border-radius: 9999px;
     text-decoration: none;
     font-weight: 600;
-    transition: all 0.3s;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     font-size: 1.1rem;
     border: 2px solid var(--secondary-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.primary-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
 }
 
 .primary-button:hover {
-    background: var(--primary-color);
-    color: var(--secondary-color);
-    border-color: var(--primary-color);
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(26, 26, 26, 0.2);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(212, 165, 116, 0.3);
+    background: #e5b584;
+}
+
+.primary-button:hover::before {
+    transform: translateX(0);
+}
+
+.primary-button span {
+    position: relative;
+    z-index: 1;
 }
 
 /* Trust Signals Section */
@@ -1515,6 +1601,21 @@ footer {
 .floating-nav .login-button,
 .floating-nav .button-line {
     display: none;
+}
+
+/* Mobile Touch Feedback */
+@media (hover: none) and (pointer: coarse) {
+    .primary-button:active,
+    .book-call-btn:active,
+    .testimonial-card:active,
+    .nav-menu a:active,
+    .faq-question:active {
+        transform: scale(0.98);
+    }
+    
+    .primary-button:active {
+        box-shadow: 0 5px 10px rgba(26, 26, 26, 0.1);
+    }
 }
 
 /* Responsive Design */
