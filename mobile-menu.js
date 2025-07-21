@@ -26,6 +26,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     navLinks.style.right = '';
                     navLinks.style.transform = '';
                     navLinks.style.width = '';
+                    navLinks.style.margin = '';
+                    // Ensure menu is within viewport bounds
+                    const rect = navLinks.getBoundingClientRect();
+                    if (rect.left < 0 || rect.right > window.innerWidth) {
+                        navLinks.style.left = '0';
+                        navLinks.style.right = '0';
+                        navLinks.style.margin = '0 auto';
+                    }
                     // Add the active class after a small delay to ensure proper positioning
                     requestAnimationFrame(() => {
                         requestAnimationFrame(() => {
@@ -79,6 +87,25 @@ document.addEventListener('DOMContentLoaded', function() {
                         navLinksOriginalParent.appendChild(navLinks);
                     }, 300);
                 }
+            }
+        });
+
+        // Handle window resize to ensure menu stays centered
+        window.addEventListener('resize', function() {
+            if (navLinks.classList.contains('active') && window.innerWidth <= 768) {
+                // Ensure menu stays centered on resize
+                navLinks.style.left = '';
+                navLinks.style.right = '';
+                navLinks.style.margin = '';
+                // Check bounds after resize
+                requestAnimationFrame(() => {
+                    const rect = navLinks.getBoundingClientRect();
+                    if (rect.left < 0 || rect.right > window.innerWidth) {
+                        navLinks.style.left = '0';
+                        navLinks.style.right = '0';
+                        navLinks.style.margin = '0 auto';
+                    }
+                });
             }
         });
     }

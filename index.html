@@ -50,15 +50,15 @@
         ],
         "aggregateRating": {
             "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "reviewCount": "127"
+            "ratingValue": "4.9",
+            "reviewCount": "47"
         }
     }
     </script>
 </head>
 <body>
     <div class="urgency-banner">
-        <p><strong>Limited Availability:</strong> Currently accepting 3 new contractors this month • <a href="#contact">Claim Your Territory →</a></p>
+        <p><strong>Now Accepting Applications:</strong> Limited availability in select markets • <a href="#contact">Check Your Area →</a></p>
     </div>
     
     <header>
@@ -75,7 +75,7 @@
                     <a href="grow.html" target="_blank">Grow</a>
                     <a href="https://www.remoteops.ai/" target="_blank">Scale</a>
                 </div>
-                <a href="book-call.html" class="book-call-btn">Book Call</a>
+                <a href="#" class="book-call-btn lets-chat-btn" onclick="openChatModal(); return false;">Start a Conversation</a>
             </div>
             <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
                 <span></span>
@@ -91,8 +91,9 @@
                 <div class="hero-text">
                     <h1>Become THE Contractor Your Community Trusts</h1>
                     <p class="subtitle">While you're perfecting your craft, we're building your reputation. Watch qualified homeowners choose you over the competition.</p>
-                    <a href="#contact" class="primary-button"><span>Build Your Reputation</span></a>
+                    <a href="#" class="primary-button lets-chat-btn" onclick="openChatModal(); return false;"><span>Start a Conversation</span></a>
                     <p class="hero-support">No shared leads. No bidding wars. Just homeowners who already know you're the right choice.</p>
+                    <p class="response-time"><i class="fas fa-bolt"></i> Average response time: under 5 minutes</p>
                 </div>
                 <div class="hero-video">
                     <div class="video-wrapper">
@@ -108,8 +109,8 @@
             </div>
             <div class="stats">
                 <div class="stat-item">
-                    <h3>10-15</h3>
-                    <p>Local FB Groups Per Client</p>
+                    <h3>Strategic</h3>
+                    <p>Local Presence</p>
                 </div>
                 <div class="stat-item">
                     <h3>$12.3K</h3>
@@ -179,13 +180,13 @@
                     <div class="badge-icon">
                         <i class="fas fa-award"></i>
                     </div>
-                    <p>8 Contractors<br>Transformed</p>
+                    <p>Personalized<br>Approach</p>
                 </div>
                 <div class="trust-badge">
                     <div class="badge-icon">
                         <i class="fas fa-users"></i>
                     </div>
-                    <p>15-20 Leads<br>Per Month</p>
+                    <p>Quality<br>Connections</p>
                 </div>
                 <div class="trust-badge">
                     <div class="badge-icon">
@@ -652,10 +653,10 @@
                 <div class="profile-image">
                     <img src="images/profile.jpg" alt="Myles Webb" class="rounded-profile">
                 </div>
-                <h3>Schedule a</h3>
-                <h2>15 Minute Intro Call</h2>
-                <a href="book-call.html" class="schedule-button">Book Your Call <span>&rarr;</span></a>
-                <p class="not-ready">Not ready for a call?</p>
+                <h3>Let's have a</h3>
+                <h2>Quick Conversation</h2>
+                <a href="#" class="schedule-button lets-chat-btn" onclick="openChatModal(); return false;">Start a Conversation <span>&rarr;</span></a>
+                <p class="not-ready">Have a quick question?</p>
                 <a href="#contact" class="submit-question">Submit A Question Here</a>
             </div>
 
@@ -718,7 +719,7 @@
                             </svg>
                         </button>
                         <div class="faq-answer">
-                            <p>Most clients see their first qualified lead within 5-7 days of implementation. Our community-driven approach typically generates 15-20 qualified leads per month.</p>
+                            <p>Most clients see their first qualified lead within 5-7 days of implementation. We focus on quality connections with homeowners who value craftsmanship and are ready to invest in their projects.</p>
                         </div>
                     </div>
 
@@ -774,7 +775,7 @@
                 <div class="step">
                     <div class="step-number">02</div>
                     <h3>Community Integration</h3>
-                    <p>Get featured in 10-15 local Facebook groups where homeowners actively seek contractor recommendations - we handle all engagement</p>
+                    <p>We connect you with local communities where homeowners actively seek trusted contractor recommendations - all engagement handled by our team</p>
                 </div>
                 <div class="step">
                     <div class="step-number">03</div>
@@ -783,8 +784,8 @@
                 </div>
                 <div class="step">
                     <div class="step-number">04</div>
-                    <h3>Pre-Qualified Leads Delivered</h3>
-                    <p>Receive 15-20 warm leads monthly from homeowners who already know your pricing, have seen your work, and are ready to hire YOU specifically</p>
+                                    <h3>Pre-Qualified Leads Delivered</h3>
+                <p>Connect with homeowners who already know your pricing, have seen your work, and are ready to move forward with their projects</p>
                 </div>
             </div>
         </div>
@@ -801,7 +802,7 @@
                 <li>Focus on your craft while we handle your online presence</li>
             </ul>
             <div class="cta-options">
-                <a href="book-call.html" class="primary-button">Schedule Your Reputation Audit</a>
+                <a href="#" class="primary-button lets-chat-btn" onclick="openChatModal(); return false;">Start a Conversation</a>
                 <p class="cta-divider">or</p>
                 <a href="#faq" class="secondary-cta">Have Questions? See Our FAQ →</a>
             </div>
@@ -896,5 +897,101 @@
     <script src="smooth-scroll.js"></script>
     <script src="scroll-animations.js"></script>
     <script src="waitlist.js"></script>
+    <!-- Chat Bubble -->
+    <button class="chat-bubble" onclick="openChatModal()" aria-label="Start a conversation">
+        <i class="fas fa-comment-dots"></i>
+        <span class="chat-bubble-text">Chat with us</span>
+    </button>
+
+    <!-- Chat Modal -->
+    <div id="chatModal" class="chat-modal">
+        <div class="chat-modal-content">
+            <button class="close-modal" onclick="closeChatModal()">&times;</button>
+            <h2>Start a Conversation</h2>
+            <p class="chat-subtitle">Choose your preferred way to connect. We typically respond in under 5 minutes.</p>
+            
+            <div class="chat-options">
+                <a href="https://ig.me/m/estimate_wave" target="_blank" class="chat-option instagram-option">
+                    <i class="fab fa-instagram"></i>
+                    <div class="chat-option-content">
+                        <h3>Instagram DM</h3>
+                        <p>Quick and easy messaging</p>
+                    </div>
+                    <span class="chat-arrow">→</span>
+                </a>
+                
+                <a href="sms:+1234567890?body=Hi%20Estimate%20Wave!%20I'm%20interested%20in%20growing%20my%20contracting%20business.%20Source%3A%20Website" class="chat-option sms-option">
+                <!-- TODO: Replace +1234567890 with your Close CRM SMS number -->
+                    <i class="fas fa-comment-sms"></i>
+                    <div class="chat-option-content">
+                        <h3>Text Message</h3>
+                        <p>Direct to my phone</p>
+                    </div>
+                    <span class="chat-arrow">→</span>
+                </a>
+                
+                <a href="https://wa.me/1234567890?text=Hi%20Estimate%20Wave!%20I'm%20interested%20in%20growing%20my%20contracting%20business." target="_blank" class="chat-option whatsapp-option">
+                <!-- TODO: Replace 1234567890 with your WhatsApp Business number (no + symbol) -->
+                    <i class="fab fa-whatsapp"></i>
+                    <div class="chat-option-content">
+                        <h3>WhatsApp</h3>
+                        <p>Chat on WhatsApp</p>
+                    </div>
+                    <span class="chat-arrow">→</span>
+                </a>
+            </div>
+            
+            <p class="trust-indicator">
+                <i class="fas fa-shield-alt"></i>
+                Join our growing network of trusted professionals
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function openChatModal() {
+            document.getElementById('chatModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Hide chat bubble when modal opens
+            const chatBubble = document.querySelector('.chat-bubble');
+            if (chatBubble) {
+                chatBubble.style.opacity = '0';
+                chatBubble.style.pointerEvents = 'none';
+            }
+        }
+        
+        function closeChatModal() {
+            document.getElementById('chatModal').classList.remove('active');
+            document.body.style.overflow = '';
+            
+            // Show chat bubble when modal closes
+            const chatBubble = document.querySelector('.chat-bubble');
+            if (chatBubble) {
+                chatBubble.style.opacity = '1';
+                chatBubble.style.pointerEvents = 'auto';
+            }
+        }
+        
+        // Close modal when clicking outside
+        document.getElementById('chatModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeChatModal();
+            }
+        });
+        
+        // Check if we should open chat modal on page load
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('openChat') === 'true') {
+            // Remove the parameter from URL without reload
+            const url = new URL(window.location);
+            url.searchParams.delete('openChat');
+            window.history.replaceState({}, document.title, url.pathname);
+            
+            // Open chat modal after a brief delay
+            setTimeout(openChatModal, 500);
+        }
+    </script>
+
 </body>
 </html>
