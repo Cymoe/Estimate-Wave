@@ -150,6 +150,7 @@ header {
     font-size: 1rem;
     transition: color 0.2s ease;
     white-space: nowrap;
+    text-align: left;
 }
 
 .nav-links a:not(.book-call-btn):hover {
@@ -272,16 +273,16 @@ header {
         position: fixed !important;
         top: 5.5rem !important;
         left: 50% !important;
-        transform: translateX(-50%) translateY(-20px) !important;
+        transform: translateX(-50%) translateY(-20px) scale(0.95) !important;
         background: white;
         border-radius: 12px;
-        box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+        box-shadow: 0 20px 60px rgba(0,0,0,0.2);
         padding: 1.5rem;
         width: calc(100% - 2rem) !important;
         max-width: 400px;
         opacity: 0;
         visibility: hidden;
-        transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         z-index: 9999;
         display: flex;
         flex-direction: column;
@@ -296,7 +297,7 @@ header {
     .nav-links.active {
         opacity: 1;
         visibility: visible;
-        transform: translateX(-50%) translateY(0) !important;
+        transform: translateX(-50%) translateY(0) scale(1) !important;
         pointer-events: auto;
     }
     
@@ -307,7 +308,7 @@ header {
             position: fixed !important;
             top: 5.5rem !important;
             left: 50% !important;
-            transform: translateX(-50%) translateY(-20px) !important;
+            transform: translateX(-50%) translateY(-20px) scale(0.95) !important;
             width: calc(100% - 2rem) !important;
             max-width: 400px !important;
             max-height: calc(100vh - 8rem) !important;
@@ -317,7 +318,7 @@ header {
         
         .main-nav .nav-links.active,
         body > .nav-links.active {
-            transform: translateX(-50%) translateY(0) !important;
+            transform: translateX(-50%) translateY(0) scale(1) !important;
         }
     }
     
@@ -326,9 +327,11 @@ header {
         flex-direction: column;
         gap: 0.5rem;
         width: 100%;
+        margin-left: 0 !important;
     }
     
-    .nav-menu a {
+    .nav-menu a,
+    .nav-links a:not(.book-call-btn) {
         padding: 1rem;
         border-radius: 8px;
         transition: background 0.2s ease;
@@ -356,6 +359,40 @@ header {
         overflow: hidden;
         position: fixed;
         width: 100%;
+    }
+    
+    /* Mobile menu backdrop */
+    body.menu-open::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        z-index: 9998;
+        animation: fadeIn 0.3s ease;
+    }
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    
+    /* Force center alignment for mobile menu links */
+    .nav-links a:not(.book-call-btn),
+    .nav-links.active .nav-menu a,
+    body > .nav-links .nav-menu a,
+    .nav-links .nav-menu a:not(.book-call-btn) {
+        text-align: center !important;
+        display: block !important;
+        width: 100% !important;
     }
 }
 
