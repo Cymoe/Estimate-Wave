@@ -270,14 +270,14 @@ header {
     
     .nav-links {
         position: fixed !important;
-        top: 5.5rem !important; /* Position below hamburger button */
+        top: 5.5rem !important;
         left: 50% !important;
-        transform: translateX(-50%) translateY(-20px);
+        transform: translateX(-50%) translateY(-20px) !important;
         background: white;
         border-radius: 12px;
         box-shadow: 0 8px 32px rgba(0,0,0,0.15);
         padding: 1.5rem;
-        width: calc(100% - 2rem);
+        width: calc(100% - 2rem) !important;
         max-width: 400px;
         opacity: 0;
         visibility: hidden;
@@ -287,19 +287,38 @@ header {
         flex-direction: column;
         align-items: stretch;
         gap: 1rem;
-        max-height: calc(100vh - 7rem);
+        max-height: calc(100vh - 8rem);
         overflow-y: auto;
         pointer-events: none;
-        /* Prevent parent transforms from affecting this element */
-        transform-origin: center;
-        will-change: transform, opacity;
+        -webkit-overflow-scrolling: touch;
     }
     
     .nav-links.active {
         opacity: 1;
         visibility: visible;
-        transform: translateY(0);
+        transform: translateX(-50%) translateY(0) !important;
         pointer-events: auto;
+    }
+    
+    /* Override positioning to ensure centering */
+    @media (max-width: 768px) {
+        .main-nav .nav-links,
+        body > .nav-links {
+            position: fixed !important;
+            top: 5.5rem !important;
+            left: 50% !important;
+            transform: translateX(-50%) translateY(-20px) !important;
+            width: calc(100% - 2rem) !important;
+            max-width: 400px !important;
+            max-height: calc(100vh - 8rem) !important;
+            overflow-y: auto !important;
+            -webkit-overflow-scrolling: touch !important;
+        }
+        
+        .main-nav .nav-links.active,
+        body > .nav-links.active {
+            transform: translateX(-50%) translateY(0) !important;
+        }
     }
     
     .nav-menu {
@@ -310,12 +329,13 @@ header {
     }
     
     .nav-menu a {
-        padding: 0.75rem 1rem;
+        padding: 1rem;
         border-radius: 8px;
         transition: background 0.2s ease;
-        text-align: center;
+        text-align: center !important;
         width: 100%;
         display: block;
+        font-weight: 500;
     }
     
     .nav-menu a:hover {
@@ -327,7 +347,9 @@ header {
         text-align: center;
         margin-top: 0.5rem;
         display: block;
-        padding: 0.875rem 2rem;
+        padding: 1rem;
+        font-size: 1rem;
+        border-radius: 8px;
     }
     
     body.menu-open {

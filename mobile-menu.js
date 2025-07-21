@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const isExpanded = this.getAttribute('aria-expanded') === 'true';
             this.setAttribute('aria-expanded', !isExpanded);
             this.classList.toggle('active');
-            navLinks.classList.toggle('active');
             body.classList.toggle('menu-open');
             
             // On mobile, move nav-links to body when opening to avoid transform issues
@@ -18,11 +17,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (!isExpanded) {
                     // Opening menu - move to body
                     body.appendChild(navLinks);
+                    // Force reflow to ensure styles are applied
+                    navLinks.offsetHeight;
+                    // Add the active class after a small delay to ensure proper positioning
+                    setTimeout(() => {
+                        navLinks.classList.add('active');
+                    }, 10);
                 } else {
-                    // Closing menu - move back to original parent
-                    navLinksOriginalParent.appendChild(navLinks);
+                    // Closing menu
+                    navLinks.classList.remove('active');
+                    // Move back after animation completes
+                    setTimeout(() => {
+                        navLinksOriginalParent.appendChild(navLinks);
+                    }, 300);
                 }
+                return; // Exit early to prevent double toggling
             }
+            
+            // Desktop behavior remains the same
+            navLinks.classList.toggle('active');
         });
 
         // Close menu when clicking on a link
@@ -36,7 +49,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Move back to original parent if on mobile
                 if (window.innerWidth <= 768 && navLinks.parentElement === body) {
-                    navLinksOriginalParent.appendChild(navLinks);
+                    setTimeout(() => {
+                        navLinksOriginalParent.appendChild(navLinks);
+                    }, 300);
                 }
             });
         });
@@ -51,7 +66,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Move back to original parent if on mobile
                 if (window.innerWidth <= 768 && navLinks.parentElement === body) {
-                    navLinksOriginalParent.appendChild(navLinks);
+                    setTimeout(() => {
+                        navLinksOriginalParent.appendChild(navLinks);
+                    }, 300);
                 }
             }
         });
